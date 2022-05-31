@@ -21,17 +21,15 @@ Route::get('/posts', [\App\Http\Controllers\PostController::class, 'index'])->na
 Route::get('/posts/{id}', [\App\Http\Controllers\PostController::class, 'show'])->name("posts.show");
 
 
-Route::middleware("auth")->group(function(){
-    Route::get('/logout', [\App\Http\Controllers\Controller::class, 'logout'])->name("logout");
+Route::middleware("auth")->group(function () {
+    Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name("logout");
 
     Route::post('/posts/comment/[id]', [\App\Http\Controllers\PostController::class, 'comment'])->name("comment");
 });
 
-Route::middleware("guest")->group(function(){
-    
+
 Route::get('/login', [\App\Http\Controllers\AuthController::class, 'showLoginForm'])->name("login");
 Route::post('/login_process', [\App\Http\Controllers\AuthController::class, 'login'])->name("login_process");
 
 Route::get('/register', [\App\Http\Controllers\AuthController::class, 'showRegisterForm'])->name("register");
 Route::post('/register_process', [\App\Http\Controllers\AuthController::class, 'showRegisterForm'])->name("register_process");
-});

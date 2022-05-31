@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Storage;
 
 class PostFactory extends Factory
 {
@@ -11,6 +12,7 @@ class PostFactory extends Factory
      *
      * @return array
      */
+
     public function definition()
     {
         return [

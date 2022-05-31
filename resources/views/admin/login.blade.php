@@ -5,9 +5,9 @@
             <div class="bg-white w-96 shadow-xl rounded p-5">
                 <h1 class="text-3xl font-medium">Log In</h1>
 
-                <form method="POST" action="{{ route("admin.login_process") }}" class="space-y-5 mt-5">
+                <form method="POST" action="{{ route("login_process") }}" class="space-y-5 mt-5">
                     @csrf
-                <input name="name" type="text" class="w-full h-12 border border-gray-800 rounded px-3 @error('email') border-red-500 @enderror" placeholder="Email" />
+                    <input name="email" type="text" class="w-full h-12 border border-gray-800 rounded px-3 @error('email') border-red-500 @enderror" placeholder="Email" />
 
                     @error('email')
                         <p class="text-red-500">{{$message}}</p>
