@@ -14,7 +14,8 @@ class Comment extends Model
         "post_id",
     ];
 
-    public function comments(){
-        return $this->hasMany(Comment::class)->orderBy("created_at");
+    public function user() {
+        $user = User::findOrFail($this->user_id);
+        return $user->name;
     }
 }

@@ -24,15 +24,15 @@ class CommentForm extends FormRequest
     public function rules()
     {
         return [
-            "text" => ["requred", "string", "min:5"],
-            "user_id"=>["requred", "exists:users,id"],
+            "text"    => ["required", "string", "min:5"],
+            "user_id" => ["required", "exists:users,id"],
         ];
     }
 
     protected function prepareForValidation()
     {
-        $this->merge( [
-                "user_id" => auth("web")->id()
+        $this->merge([
+            "user_id" => auth("web")->id(),
         ]);
     }
 }

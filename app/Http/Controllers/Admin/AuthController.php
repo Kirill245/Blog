@@ -7,13 +7,18 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
+    public function index()
+    {
+        return view('admin.login');
+    }
+
     public function login(Request $request){
         $data = $request->validate([
-            "email" => ["required", "email", "string"],
+            "email" => ["required", "email"],
             "password" => ["required"]
         ]);
 
-        if(auth("admin")->attempt($data)){
+        if (auth("admin")->attempt($data)) {
             return redirect(route("admin.posts.index"));
         }
 

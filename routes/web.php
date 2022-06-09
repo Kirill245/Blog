@@ -22,9 +22,10 @@ Route::get('/posts/{id}', [\App\Http\Controllers\PostController::class, 'show'])
 
 
 Route::middleware("auth")->group(function () {
-    Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name("logout");
 
-    Route::post('/posts/comment/[id]', [\App\Http\Controllers\PostController::class, 'comment'])->name("comment");
+    Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name("logout");
+    Route::post('/posts/comment/{id}', [\App\Http\Controllers\PostController::class, 'comment'])->name("comment");
+
 });
 
 
@@ -32,4 +33,4 @@ Route::get('/login', [\App\Http\Controllers\AuthController::class, 'showLoginFor
 Route::post('/login_process', [\App\Http\Controllers\AuthController::class, 'login'])->name("login_process");
 
 Route::get('/register', [\App\Http\Controllers\AuthController::class, 'showRegisterForm'])->name("register");
-Route::post('/register_process', [\App\Http\Controllers\AuthController::class, 'showRegisterForm'])->name("register_process");
+Route::post('/register_process', [\App\Http\Controllers\AuthController::class, 'register'])->name("register_process");
